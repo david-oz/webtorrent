@@ -144,17 +144,25 @@ Object.defineProperty(WebTorrent.prototype, 'uploadSpeed', {
  */
 WebTorrent.prototype.get = function (torrentId) {
   var self = this
-  if (torrentId instanceof Torrent) return torrentId
+  var i, torrent
+  var len = self.torrents.length
 
-  var parsed
-  try { parsed = parseTorrent(torrentId) } catch (err) {}
+  if (torrentId instanceof Torrent) {
+    for (i = 0; i < len; i++) {
+      torrent = self.torrents[i]
+      if (torrent === torrentId) return torrent
+    }
+  } else {
+    var parsed
+    try { parsed = parseTorrent(torrentId) } catch (err) {}
 
-  if (!parsed) return null
-  if (!parsed.infoHash) throw new Error('Invalid torrent identifier')
+    if (!parsed) return null
+    if (!parsed.infoHash) throw new Error('Invalid torrent identifier')
 
-  for (var i = 0, len = self.torrents.length; i < len; i++) {
-    var torrent = self.torrents[i]
-    if (torrent.infoHash === parsed.infoHash) return torrent
+    for (i = 0; i < len; i++) {
+      torrent = self.torrents[i]
+      if (torrent.infoHash === parsed.infoHash) return torrent
+    }
   }
   return null
 }
