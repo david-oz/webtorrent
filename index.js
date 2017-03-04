@@ -301,8 +301,13 @@ WebTorrent.prototype.remove = function (torrentId, cb) {
 
   var torrent = self.get(torrentId)
   if (!torrent) throw new Error('No torrent with id ' + torrentId)
+  this._remove(torrentId, cb)
+}
 
-  self.torrents.splice(self.torrents.indexOf(torrent), 1)
+WebTorrent.prototype._remove = function (torrentId, cb) {
+  var torrent = this.get(torrentId)
+  if (!torrent) return
+  this.torrents.splice(this.torrents.indexOf(torrent), 1)
   torrent.destroy(cb)
 }
 
