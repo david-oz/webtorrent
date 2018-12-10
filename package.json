@@ -32,7 +32,7 @@
   "dependencies": {
     "addr-to-ip-port": "^1.4.2",
     "bitfield": "^2.0.0",
-    "bittorrent-dht": "git+https://github.com/oleiba/bittorrent-dht.git",
+    "bittorrent-dht": "git+https://github.com/david-oz/bittorrent-dht.git",
     "bittorrent-protocol": "git+https://github.com/david-oz/bittorrent-protocol.git",
     "chunk-store-stream": "^2.0.2",
     "create-torrent": "^3.24.5",
@@ -68,7 +68,7 @@
     "stream-to-blob": "^1.0.0",
     "stream-to-blob-url": "^2.1.0",
     "stream-with-known-length-to-buffer": "^1.0.0",
-    "torrent-discovery": "^8.3.1",
+    "torrent-discovery": "git+https://github.com/david-oz/torrent-discovery",
     "torrent-piece": "^1.1.0",
     "uniq": "^1.0.1",
     "unordered-array-remove": "^1.0.2",
